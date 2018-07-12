@@ -100,24 +100,12 @@ def msg_get_reply_params(update):
     if reply_chat_id is not None:
         return reply_chat_id, reply_message_id
     # end if
-    return reply_chat_id, reply_message_id
 
-    if update.message and update.message.chat.id and update.message.message_id:
-        reply_chat_id, reply_message_id = update.message.chat.id, update.message.message_id
+    if update.inline_query and update.inline_query.from_peer and update.inline_query.from_peer.id:
+        return update.inline_query.from_peer.id, None
     # end if
-    if update.channel_post and update.channel_post.chat.id and update.channel_post.message_id:
-        reply_chat_id, reply_message_id = update.channel_post.chat.id, update.channel_post.message_id
-    # end if
-    if update.edited_message and update.edited_message.chat.id and update.edited_message.message_id:
-        reply_chat_id, reply_message_id = update.edited_message.chat.id, update.edited_message.message_id
-    # end if
-    if update.edited_channel_post and update.edited_channel_post.chat.id and update.edited_channel_post.message_id:
-        reply_chat_id, reply_message_id = update.edited_channel_post.chat.id, update.edited_channel_post.message_id
-    # end if
-    if update.callback_query and update.callback_query.message and update.callback_query.message.chat and update.callback_query.message.chat.id and update.callback_query.message.message_id:
-        reply_chat_id, reply_message_id = update.callback_query.message.chat.id, update.callback_query.message.message_id
-    # end if
-    return reply_chat_id, reply_message_id
+
+    return None, None
 # end def
 
 
