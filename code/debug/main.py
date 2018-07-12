@@ -88,7 +88,7 @@ def income(update):
         string = json.dumps(update.to_array(), indent=4, sort_keys=True, ensure_ascii=False)
     # end if
     return HTMLMessage(
-        "<code>{}</code>".format(string),
+        "<code>{}</code>".format(escape(string)),
         receiver=reply_chat_id, reply_id=reply_message_id
     )
 # end def
@@ -96,7 +96,7 @@ def income(update):
 
 def msg_get_reply_params(update):
     # reply_chat_id, reply_message_id = \
-    reply_chat_id, reply_message_id = bot.msg_get_reply_params(update)
+    reply_message_id, reply_chat_id = bot.msg_get_reply_params(update)
     if reply_chat_id is not None:
         return reply_chat_id, reply_message_id
     # end if
@@ -115,8 +115,9 @@ def msg_get_reply_params(update):
         reply_chat_id, reply_message_id = update.edited_channel_post.chat.id, update.edited_channel_post.message_id
     # end if
     if update.callback_query and update.callback_query.message and update.callback_query.message.chat and update.callback_query.message.chat.id and update.callback_query.message.message_id:
-        reply_message_id, reply_chat_id = update.callback_query.message.message_id, update.callback_query.message.chat.id
+        reply_chat_id, reply_message_id = update.callback_query.message.chat.id, update.callback_query.message.message_id
     # end if
+    return reply_chat_id, reply_message_id
 # end def
 
 
