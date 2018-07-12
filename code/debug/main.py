@@ -7,10 +7,9 @@ from flask import Flask, request, jsonify
 from teleflask import Teleflask
 from teleflask.messages import HTMLMessage
 from html import escape
-import requests
 
-from .gitinfo import VERSION_STR
 from .secrets import API_KEY, HOSTNAME, URL_PATH, EVENT_CHANNEL
+from .commands import bot as commands
 
 __author__ = 'luckydonald'
 logger = logging.getLogger(__name__)
@@ -24,6 +23,8 @@ logging.add_colored_handler(level=logging.DEBUG)
 app = Flask(__name__)
 
 bot = Teleflask(API_KEY, app)
+
+bot.register_tblueprint(commands)
 
 
 def to_json_remove_api_key(func):
@@ -107,13 +108,6 @@ def msg_get_reply_params(update):
 
     return None, None
 # end def
-
-
-@bot.command('version')
-def cmd_version(update, text):
-    return HTMLMessage('<code>{version}</code>'.format(version=escape(VERSION_STR)))
-# end def
-
 
 @app.route("/")
 def hello():
