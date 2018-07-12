@@ -1,0 +1,6 @@
+luckydonald-utils  # always good to have
+flask  # flask (webserver)
+
+## Bot ##
+pytgbot==3.6.0  # bot api
+teleflask==1.0.1  # yeah, telegram!

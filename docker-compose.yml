@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  bot:
+    build:
+      context: ./
+    environment:
+      TG_API_KEY:
+      TG_EVENT_CHANNEL:
+      URL_PATH:
+      URL_HOSTNAME:
