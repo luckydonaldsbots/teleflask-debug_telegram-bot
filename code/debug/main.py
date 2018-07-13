@@ -97,7 +97,7 @@ def income(update):
 
 def msg_get_reply_params(update):
     # reply_chat_id, reply_message_id = \
-    reply_message_id, reply_chat_id = bot.msg_get_reply_params(update)
+    reply_chat_id, reply_message_id = bot.msg_get_reply_params(update)
     if reply_chat_id is not None:
         return reply_chat_id, reply_message_id
     # end if
