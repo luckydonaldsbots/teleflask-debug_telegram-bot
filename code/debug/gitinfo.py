@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 __author__ = "luckydonald"
 
+
 try:    from gitinfo_values import __all__
 except: __all__ = ["GIT_COMMIT", "GIT_COMMIT_SHORT", "GIT_DIRTY_PROJECT", "GIT_DIRTY_GLOBAL", "GIT_MESSAGE", "GIT_AUTHOR", "GIT_DATE", "GIT_HEAD", "GIT_BRANCHES", "GIT_TAGS", "VERSION_STR", "GIT_MODIFIED_FILES", "GIT_MODIFIED_FILES_STR"]
+__all__.append('bot')
+
 
 try:    from gitinfo_values import GIT_COMMIT
 except: GIT_COMMIT = None
@@ -38,10 +41,22 @@ try:    from gitinfo_values import GIT_TAGS
 except: GIT_TAGS = []
 
 try:    from gitinfo_values import VERSION_STR
-except: VERSION_STR = []
+except: VERSION_STR = ""
 
 try:    from gitinfo_values import GIT_MODIFIED_FILES
 except: GIT_MODIFIED_FILES = {"added": [], "copied": [], "deleted": [], "modified": [], "renamed": [], "type_changed":[], "unmerged": [], "unknown": [], "broken": [], "by_file":{}}
 
 try:    from gitinfo_values import GIT_MODIFIED_FILES_STR
 except: GIT_MODIFIED_FILES_STR = ""
+
+
+from html import escape
+from teleflask.messages import HTMLMessage
+from teleflask import TBlueprint
+
+bot = TBlueprint(__name__)
+
+@bot.command('version')
+def cmd_version(update, text):
+    return HTMLMessage('<code>{version}</code>'.format(version=escape(VERSION_STR)))
+# end def

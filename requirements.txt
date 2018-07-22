@@ -3,5 +3,5 @@ flask  # flask (webserver)
 
 ## Bot ##
 pytgbot==3.6.0  # bot api
-# teleflask==1.0.1  # yeah, telegram!
--e git://github.com/luckydonald/teleflask.git@95ac61c961cbf0603437eb9def11b26dc088310d#egg=teleflask_95ac61c961cbf0603437eb9def11b26dc088310d  # Next: 2.0.0  # 2018-07-12 Blueprint WIP
+# teleflask==2.0.0  # telegram bot, flask-like!
+-e git://github.com/luckydonald/teleflask.git@2bde5b70051467282862f2c5d32c80127b956073#egg=teleflask_2bde5b  # 2.0.0.dev7, Next: 2.0.0  # 2018-07-22 Blueprints

@@ -10,14 +10,12 @@ from html import escape
 
 from .utils import to_json_remove_api_key, msg_get_reply_params
 from .secrets import API_KEY, EVENT_CHANNEL
-from .commands import bot as commands_bp
-from .features import bot as features_bp
+from .commands import bot as commands_tbp
+from .features import bot as features_tbp
+from .gitinfo import bot as versions_tbp
 
 __author__ = 'luckydonald'
 logger = logging.getLogger(__name__)
-
-VERSION = "0.0.1"
-__version__ = VERSION
 
 logging.add_colored_handler(level=logging.DEBUG)
 
@@ -26,8 +24,9 @@ app = Flask(__name__)
 
 bot = Teleflask(API_KEY, app)
 
-bot.register_tblueprint(commands_bp)
-bot.register_tblueprint(features_bp)
+bot.register_tblueprint(commands_tbp)
+bot.register_tblueprint(features_tbp)
+bot.register_tblueprint(versions_tbp)
 
 
 @app.route("/info/<api_key>/<command>")
