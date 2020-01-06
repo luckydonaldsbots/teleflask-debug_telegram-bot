@@ -9,7 +9,7 @@ from teleflask.messages import HTMLMessage
 from html import escape
 
 from .utils import to_json_remove_api_key, msg_get_reply_params
-from .secrets import API_KEY, EVENT_CHANNEL
+from .secrets import API_KEY, EVENT_CHANNEL, SERVER_BASE_URL
 from .commands import bot as commands_tbp
 from .features import bot as features_tbp
 from .gitinfo import bot as versions_tbp
@@ -23,6 +23,11 @@ logging.add_colored_handler(level=logging.DEBUG)
 app = Flask(__name__)
 
 bot = Teleflask(API_KEY, app)
+
+if SERVER_BASE_URL:
+    logger.debug(f'Bot is now using base URL {SERVER_BASE_URL!r} for telegram requests.')
+    bot.bot._base_url = SERVER_BASE_URL
+# end if
 
 bot.register_tblueprint(commands_tbp)
 bot.register_tblueprint(features_tbp)

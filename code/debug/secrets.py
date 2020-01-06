@@ -17,3 +17,10 @@ assert(URL_PATH is not None)  # URL_PATH environment variable
 
 EVENT_CHANNEL = os.getenv('TG_EVENT_CHANNEL', None)
 assert(EVENT_CHANNEL is not None)  # TG_EVENT_CHANNEL environment variable
+
+# This allows to use different server implementations like https://github.com/luckydonald/telegram_api_server
+SERVER_BASE_URL = os.getenv('TG_SERVER_BASE_URL', None)  # can be None
+if not SERVER_BASE_URL:  # empty "" -> None
+    SERVER_BASE_URL = None
+# end if
+
