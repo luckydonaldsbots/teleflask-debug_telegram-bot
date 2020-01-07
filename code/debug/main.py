@@ -42,7 +42,6 @@ bot.register_tblueprint(versions_tbp)
 @app.route("/info/<api_key>/<command>")
 @to_json_remove_api_key
 def info(api_key, command):
-
     """
     Issue commands. E.g. /info/getMe
 
