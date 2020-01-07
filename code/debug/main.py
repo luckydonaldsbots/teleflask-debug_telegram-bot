@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 
+from pytgbot import Bot
 from pytgbot.api_types.receivable.updates import Update
 from luckydonaldUtils.logger import logging
 from flask import Flask, request, jsonify
@@ -22,12 +23,16 @@ logging.add_colored_handler(level=logging.DEBUG)
 
 app = Flask(__name__)
 
-bot = Teleflask(API_KEY, app)
+bot = Teleflask(API_KEY)
 
 if SERVER_BASE_URL:
     logger.debug(f'Bot is now using base URL {SERVER_BASE_URL!r} for telegram requests.')
-    bot.bot._base_url = SERVER_BASE_URL
+    _bot = Bot(API_KEY),
+    _bot._base_url = SERVER_BASE_URL
+    bot._bot = _bot
 # end if
+
+bot.init_app(app)  # postponed until the bot is set
 
 bot.register_tblueprint(commands_tbp)
 bot.register_tblueprint(features_tbp)
