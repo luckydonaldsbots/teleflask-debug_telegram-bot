@@ -1,7 +1,12 @@
-luckydonald-utils  # always good to have
-flask  # flask (webserver)
+# luckydonald-utils
+-e git://github.com/luckydonald/python-utils.git@10e9b79e22f2fc805db80f16c382fb05d317ba88#egg=luckydonald-utils
 
-## Bot ##
-pytgbot==4.5.2  # bot api
-# teleflask==2.0.0  # telegram bot, flask-like!
--e git://github.com/luckydonald/teleflask.git@2bde5b70051467282862f2c5d32c80127b956073#egg=teleflask_2bde5b  # 2.0.0.dev7, Next: 2.0.0  # 2018-07-22 Blueprints
+# flask
+flask
+
+# pytgbot
+-e git://github.com/luckydonald/pytgbot.git@40b71dcd5e844ff0cce0f6182344f59c2805ef4a#egg=pytgbot_40b71d
+
+# teleflask
+-e git://github.com/luckydonald/teleflask.git@652cd1008f4b335b905599c4b4dd577d6e8f6a94#egg=teleflask_652cd1
+

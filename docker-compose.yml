@@ -3,8 +3,26 @@ services:
   bot:
     build:
       context: ./
+      args:
+        FOLDER: ""
     environment:
       TG_API_KEY:
       TG_EVENT_CHANNEL:
       URL_PATH:
       URL_HOSTNAME:
+      LOGLEVEL: 'debug'
+      MODULE_NAME: 'main'
+      VARIABLE_NAME: 'app'
+      APP_MODULE: 'main:app'
+      WORKERS_PER_CORE: 1
+      WEB_CONCURRENCY: 1
+      PORT: 8012
+    command: "gunicorn -k egg:meinheld#gunicorn_worker -c /gunicorn_conf.py --access-logfile=- main:app"
+    labels:
+      auto_proxy.enable: "1"
+      auto_proxy.host: "§{URL_HOSTNAME}"
+      auto_proxy.mount_point: "§{URL_PATH}"
+      auto_proxy.protocol: http
+      auto_proxy.access: net
+      auto_proxy.port: "§{PORT}"
+      auto_proxy.strip_mount_point: 0
