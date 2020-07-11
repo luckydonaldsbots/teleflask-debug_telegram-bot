@@ -5,7 +5,7 @@
 flask
 
 # pytgbot
--e git://github.com/luckydonald/pytgbot.git@6ec28b09dc571bc642789065e02f8cd2af0699e4#egg=pytgbot_6ec28b
+pytgbot==4.9.0
 
 # teleflask
 -e git://github.com/luckydonald/teleflask.git@652cd1008f4b335b905599c4b4dd577d6e8f6a94#egg=teleflask_652cd1
