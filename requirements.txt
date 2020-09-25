@@ -1,5 +1,5 @@
 # luckydonald-utils
-luckydonald-utils==0.80
+luckydonald-utils==0.81
 
 # flask
 flask==1.1.2
