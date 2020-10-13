@@ -8,5 +8,5 @@ flask==1.1.2
 pytgbot==4.9.1
 
 # teleflask
--e git://github.com/luckydonald/teleflask.git@cb541317bd9794178484590a83f236744209c16d#egg=teleflask_cb5413
+-e git://github.com/luckydonald/teleflask.git@ea5f1925c58f42ad83d417660ba6665c7af0d9a2#egg=teleflask
 
