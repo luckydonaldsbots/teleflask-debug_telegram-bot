@@ -5,7 +5,7 @@ luckydonald-utils==0.83
 flask==1.1.2
 
 # pytgbot
-pytgbot==5.0.0b2
+pytgbot==5.0b3
 
 # teleflask
 -e git://github.com/luckydonald/teleflask.git@ea5f1925c58f42ad83d417660ba6665c7af0d9a2#egg=teleflask
